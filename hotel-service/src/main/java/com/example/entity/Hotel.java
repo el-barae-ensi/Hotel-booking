@@ -1,28 +1,41 @@
 package com.example.entity;
 
-import lombok.Data;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import jakarta.persistence.*;
+import org.springframework.context.annotation.Bean;
+
+
+@Entity
+@Table(name = "hotels")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Hotel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(length = 1000)
     private String description;
+
+    @Column(nullable = false)
     private Double pricePerNight;
 
-    public Hotel(Long id, String name, String address, String city, String description, Double pricePerNight, Integer availableRooms) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.description = description;
-        this.pricePerNight = pricePerNight;
-        this.availableRooms = availableRooms;
-    }
-
+    @Column(nullable = false)
     private Integer availableRooms;
-
-
 }
